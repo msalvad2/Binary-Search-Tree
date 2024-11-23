@@ -24,7 +24,8 @@ class table
     product_node * root;
     int insert(product_node * & root, product & new_product);
     int display_all(product_node * root);
-    int remove(product_node * & root, char * name);
+    int remove(product_node * & root, char * name, product & new_product);
+    int IOS(product_node * & root, char * name, product & new_product); 
     int retrieve(char * name, product & new_product, product_node * root);
     int display_range(int low, int high, product_node * root);
     int height(product_node * root);
