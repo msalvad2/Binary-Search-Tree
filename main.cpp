@@ -10,7 +10,7 @@ int main()
 
     do
     {
-        cout << "a).insert b).display all q).quit: ";
+        cout << "a).insert b).display all c).Remove q).quit: ";
         cin >> choice;
         cin.ignore(SIZE, '\n');
         switch(choice)
