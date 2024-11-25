@@ -10,7 +10,7 @@ int main()
 
     do
     {
-        cout << "a).insert b).display all c).Remove q).quit: ";
+        cout << "a).insert b).display all c).Remove d).Retrieve e). range f).Height q).quit: ";
         cin >> choice;
         cin.ignore(SIZE, '\n');
         switch(choice)
@@ -81,8 +81,55 @@ int main()
                     product empty_product;
 
                     bst.remove(name, empty_product);
-
+                    break;
              
+                }
+                case 'd':
+                {
+                    char name[SIZE];
+                    product retrieved_obj;
+
+                    cout << "Name of product you wish to retrieve: ";
+                    cin.get(name, SIZE, '\n');
+                    cin.ignore(SIZE, '\n');
+                    bst.retrieve(name, retrieved_obj);
+
+                    if(retrieved_obj.display() == -1)
+                        cout << "No Match" << endl;
+                    /*else
+                    {
+                    cout << "Values Retrieved are: " << endl;
+                    retrieved_obj.display();
+                    }
+                    */
+                   break; 
+                }
+                case 'e':
+                {
+                    float low{0.0};
+                    float high{0.0};
+                    
+                    cout << "Give products Range you are looking for: " << endl;
+
+                    cout << "Low: ";
+                    cin >> low;
+                    cin.ignore(SIZE, '\n');
+
+                    cout << "High: ";
+                    cin >> high;
+                    cin.ignore(SIZE, '\n');
+
+
+                    bst.display_range(low, high);
+                    break;
+
+                }
+                case 'f':
+                {
+                    int height = bst.height();
+
+                    cout << "The height of the tree is: " << height << endl;
+                    break;
                 }
         }              
     }while(choice != 'q');

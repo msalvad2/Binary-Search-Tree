@@ -50,11 +50,13 @@ product::~product()
     price = 0;
     quantity = 0;
     ID = 0;
-    if(shop_name) delete shop_name;
+    if(shop_name) delete[] shop_name;
 }
 //This function will display the contents in the obj
 int product::display()
 {
+    if(!title) return -1;
+
    cout <<"Title: " << title << endl;
    cout <<"Description: " << description << endl;
    cout <<"Category: " << category << endl;
@@ -114,8 +116,15 @@ int product::compare(product & new_product)
 int product::compare_name(char *name)//Compares when sending a name
 {
     int num = strcmp(title, name);
-    if(num > 0) return -1;
-    if(num < 0) return 1;
+    if(num > 0) return -1;//Means go left
+    if(num < 0) return 1;//Means go right
 
-    return 0;
+    return 0;//This means they are the same
+}
+bool product::range_compare(float low, float high)
+{
+  if( price > low && price < high)
+      return true;
+    return false;
+
 }

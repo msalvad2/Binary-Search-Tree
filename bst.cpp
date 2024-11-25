@@ -9,9 +9,22 @@ table::table()
 
 table::~table()
 {
-
+    destructor(root);    
 }
 
+int table::destructor(product_node *& root)
+{
+    if(!root) return 1;
+
+    destructor(root->left);
+    destructor(root->right);
+
+    delete root;
+    root = nullptr;
+
+    return 1;
+    
+}
 int table::insert(product & new_product)
 {
     return insert(root, new_product); 
@@ -125,10 +138,57 @@ int table::IOS(product_node * & root, char * name, product & new_product)
 
 int table::retrieve(char * name, product & new_product)
 {
-    return 1;
+    if(!root) return 0;
+    
+    return retrieve(name, new_product, root);
 }
 
 int table::retrieve(char * name, product & new_product, product_node * root)
 {
-    return 1;
+    if(!root) return -1;//No match was found
+
+    if(root->a_product.compare_name(name) == 0)
+    {
+        new_product.copy(root->a_product);
+        return 1;
+    }
+
+    else if(root->a_product.compare_name(name) == -1)
+        return retrieve(name, new_product, root->left);
+    else
+        return retrieve(name, new_product, root->right);
+}
+int table::height()
+{
+    if(!root) return 0;
+
+    return height(root) - 1;//I subract 1 bc the height starts at 0
+                            //It is the edges to the longest path
+}
+
+int table::height(product_node * root)
+{
+    if(!root) return 0;
+    
+    int left = height(root->left);
+    int right = height(root->right);
+    
+    return max(left, right) + 1;
+}
+int table::display_range(float low, float high)
+{
+    if(!root) return 0;
+    
+    return display_range(root, low, high);
+}
+
+int table::display_range(product_node * root, float low, float high)
+{
+    if(!root) return 0;
+    
+    if(root->a_product.range_compare(low, high))
+        root->a_product.display();
+    display_range(root->left, low, high);
+    return display_range(root->right, low, high);
+    
 }
