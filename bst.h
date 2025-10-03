@@ -1,5 +1,7 @@
-//Miguel Salvador
+//Miguel Salvador, msalvad2@pdx.edu, Program #4, 12/2/2024
 //The data structure used will be a binary search tree
+//In this file it contains all the functions the bst will have and
+//The libraries we will use
 
 #include <iostream>
 #include <cctype>

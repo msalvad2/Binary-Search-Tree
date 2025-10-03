@@ -1,17 +1,19 @@
-//Hello
-
+//Miguel Salvador, msalvad2@pdx.edu, Program #4, 12/2/2024
+//This file contains the implemenations of the bst so it contains
+//functions that'll help us add, remove, insert, display, etc.
 #include "bst.h"
 using namespace std;
+//constructor initializes the data to 0
 table::table()
 {
     root = nullptr;
 }
-
+//Deallocates all of the dynamic memory
 table::~table()
 {
     destructor(root);    
 }
-
+//This is a recursive function called in deconstructor
 int table::destructor(product_node *& root)
 {
     if(!root) return 1;
@@ -25,11 +27,12 @@ int table::destructor(product_node *& root)
     return 1;
     
 }
+//wrapper created to insert a node in the bst
 int table::insert(product & new_product)
 {
     return insert(root, new_product); 
 }
-
+//Recursive function checks to see where to insert in bst
 int table::insert(product_node *& root, product & new_product)
 {
     if(!root)
@@ -48,13 +51,14 @@ int table::insert(product_node *& root, product & new_product)
     return 1;
 
 }
+//wrapper created to display the data in the bst
 int table::display_all()
 {
     if(!root) return 0;
 
     return display_all(root);
 }
-
+//Recursive call to display all the contents in the bst
 int table::display_all(product_node* root)
 {
     if(!root) return 0;
@@ -62,7 +66,7 @@ int table::display_all(product_node* root)
     cout << root->a_product.display();
     return display_all(root->right);
 }
-
+//Wrapper function called to remove a node in the bst
 int table::remove(char * name, product & new_product)
 {
     if(!root) return 0;
@@ -71,7 +75,7 @@ int table::remove(char * name, product & new_product)
     return remove(root, name, new_product);
 }
 
-
+//This function will test all cases when removing a node in the bst
 int table::remove(product_node * & root, char * name, product & new_product)
 {
 
@@ -118,7 +122,7 @@ int table::remove(product_node * & root, char * name, product & new_product)
 
 
 }
-
+//This function will return the in order succer being the next highest node
 int table::IOS(product_node * & root, char * name, product & new_product)
 {
     if(!root->left)
@@ -135,14 +139,14 @@ int table::IOS(product_node * & root, char * name, product & new_product)
     }
     return IOS(root->left, name, new_product);
 }
-
+//wrapper called to retrieve data
 int table::retrieve(char * name, product & new_product)
 {
     if(!root) return 0;
     
     return retrieve(name, new_product, root);
 }
-
+//recursive call in orde to retrieve the correct data
 int table::retrieve(char * name, product & new_product, product_node * root)
 {
     if(!root) return -1;//No match was found
@@ -158,6 +162,7 @@ int table::retrieve(char * name, product & new_product, product_node * root)
     else
         return retrieve(name, new_product, root->right);
 }
+//will return the height of the tree (wrapper function)
 int table::height()
 {
     if(!root) return 0;
@@ -165,7 +170,7 @@ int table::height()
     return height(root) - 1;//I subract 1 bc the height starts at 0
                             //It is the edges to the longest path
 }
-
+//The recursive call to check the height of every path return the biggest one
 int table::height(product_node * root)
 {
     if(!root) return 0;
@@ -175,13 +180,14 @@ int table::height(product_node * root)
     
     return max(left, right) + 1;
 }
+//wrapper to display a range
 int table::display_range(float low, float high)
 {
     if(!root) return 0;
     
     return display_range(root, low, high);
 }
-
+//this function will check every node and see if it is in the desired range and dislplay it
 int table::display_range(product_node * root, float low, float high)
 {
     if(!root) return 0;

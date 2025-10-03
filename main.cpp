@@ -1,5 +1,6 @@
-//Miguel Salvador
-
+//Miguel Salvador, msalvad2@pdx.edu, Program #4, 12/2/2024
+//This is the main file in it we will test to make sure that
+//all of our functions created work
 #include "bst.h"
 using namespace std;
 

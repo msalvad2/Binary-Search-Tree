@@ -1,11 +1,13 @@
-//The data type
+//Miguel Salvador, msalvad2@pdx.edu, Program #4, 12/2/2024
+//This file contains all of the functions we will have access to when
+//using the product data type to insert, add, remove, display, etc.
 
 #include <iostream>
 #include <cstring>
 #include <cctype>
 
 const int SIZE{500};
-
+//Belos is the data type for the class
 class product
 {
     public:
@@ -41,7 +43,7 @@ class product
 
     
 };
-
+//This is the node that contains the data type and a left&right pointer
 struct product_node
 {
     product a_product;

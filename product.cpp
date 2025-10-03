@@ -1,4 +1,6 @@
-//Hello
+//Miguel Salvador, msalvad2@pdx.edu, Program #4, 12/2/2024
+//This file contains the data member of each node in the bst since it is a class
+//that means that the data has function in order to work with the data
 #include "product.h"
 using namespace std;
 
@@ -103,7 +105,7 @@ int product::copy(product & new_product)
 
     return 1;
 }
-
+//will compare the title of an object sent it and the member title
 int product::compare(product & new_product)
 {
     int num = strcmp(title, new_product.title);//Strcmp will return a value
@@ -121,6 +123,7 @@ int product::compare_name(char *name)//Compares when sending a name
 
     return 0;//This means they are the same
 }
+//Will compare the desired range from the user
 bool product::range_compare(float low, float high)
 {
   if( price > low && price < high)
